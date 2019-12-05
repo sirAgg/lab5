@@ -1,0 +1,3 @@
+[submodule "deps/SDL"]
+	path = deps/SDL
+	url = git@github.com:SDL-mirror/SDL.git
