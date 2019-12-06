@@ -1,13 +1,15 @@
 #ifndef CIRCLE_H
 #define CIRCLE_H value
 
+#include "SDL.h"
+
 #include "Shape.h"
 
 class Circle : public Shape
 {
 public:
     Circle(Point2D pos, int color, int radius);
-    void render();
+    void render(SDL_Renderer* renderer);
 private:
     int radius;
 };

@@ -18,8 +18,8 @@ public:
     void operator= (const Point2D& other);
     bool operator== (const Point2D& other);
 
-private:
     float x,y;
+private:
 };
 
 #endif /* ifndef POINT_2D */

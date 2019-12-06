@@ -1,6 +1,7 @@
 #ifndef RECTANGLE_H
 #define RECTANGLE_H value
 
+#include "SDL.h"
 #include "Shape.h"
 
 class Rectangle : public Shape
@@ -8,7 +9,7 @@ class Rectangle : public Shape
 public:
     Rectangle(Point2D pos, int color, int width, int height);
 
-    void render();
+    void render(SDL_Renderer* renderer);
 private:
     
     int width, height;
