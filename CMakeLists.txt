@@ -13,7 +13,7 @@ link_directories(BEFORE "deps" ".")
 
 project(task2)
 
-add_executable(task2 WIN32
+add_executable(task2
     task2.cpp
     Point2D.cpp
     Shape.cpp
@@ -22,8 +22,7 @@ add_executable(task2 WIN32
     Circle.cpp
 )
 if(WIN32)
-    include_directories("deps" "deps/winin/include/")
-    SET(CMAKE_MFC_FLAG 2) 
+    include_directories(BEFORE "deps" "deps/winin/include/")
     set(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS YES)
     configure_file("deps/SDL2.dll" "${CMAKE_BINARY_DIR}/SDL2.dll" COPYONLY)
     target_link_libraries(task2 ${CMAKE_SOURCE_DIR}/deps/SDL2.lib ${CMAKE_SOURCE_DIR}/deps/SDL2main.lib )
