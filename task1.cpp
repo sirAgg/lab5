@@ -30,7 +30,6 @@ int main(void)
     Triangle tri    = Triangle (Point2D(10.0f,30.0f),   0xFF0000FF, 300,300);
     Circle circ     = Circle   (Point2D(200.0f,200.0f), 0x00FFFFFF, 150);
 
-
     
     std::vector<Shape*> shapes;
     shapes.push_back(&rect); 

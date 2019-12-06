@@ -1,33 +1,101 @@
 #include <stdio.h>
 
+#include <vector>
+#include <cstdlib>
+#include <time.h>
 #include "SDL.h"
 
+#include "Point2D.h"
 #include "Rectangle.h"
 #include "Triangle.h"
 #include "Circle.h"
 
+const int window_width  = 600;
+const int window_height = 400;
+
+Rectangle* create_random_rectange()
+{
+    return new Rectangle(
+            Point2D((float)(rand()%window_width), (float)(rand()%window_height) ),
+            rand() | 255, 
+            rand()%window_width,
+            rand()%window_height);
+}
+Triangle* create_random_triangle()
+{
+    return new Triangle(
+            Point2D((float)(rand()%window_width), (float)(rand()%window_height) ),
+            rand() | 255, 
+            rand()%window_width,
+            rand()%window_height);
+}
+Circle* create_random_circle()
+{
+    return new Circle(
+            Point2D((float)(rand()%window_width), (float)(rand()%window_height) ),
+            rand() | 255, 
+            rand()%window_height);
+}
+
 int main(int argc, char** argv)
 {
-    printf("Hello World!\n");    
-
+    // initilize SDL
     SDL_Init(SDL_INIT_EVERYTHING);
-    SDL_Window* window = SDL_CreateWindow("Hello there", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 600,400, SDL_WINDOW_SHOWN);
+    SDL_Window* window = SDL_CreateWindow(
+            "Hello there", 
+            SDL_WINDOWPOS_CENTERED, 
+            SDL_WINDOWPOS_CENTERED, 
+            window_width,window_height, 
+            SDL_WINDOW_SHOWN);
+
     SDL_Renderer* renderer = SDL_CreateRenderer(window, -1, 0);
-    SDL_Event* event;
-    Rectangle rect  = Rectangle(Point2D(50.0f,50.0f), 0x00FF00FF, 400,300);
-    Triangle tri    = Triangle (Point2D(10.0f,30.0f), 0xFF0000FF, 300,300);
-    Circle circ     = Circle   (Point2D(200.0f,200.0f), 0x00FFFFFF, 150);
-    SDL_SetRenderDrawColor(renderer, 0, 50, 0, 255);
-    SDL_RenderClear(renderer);
+    SDL_Event event;
 
-    //SDL_SetRenderDrawColor(renderer, 0, 0, 255, 255);
-    //SDL_RenderDrawLine(renderer, 100,100,500,300);
-    rect.render(renderer);
-    tri.render(renderer);
-    circ.render(renderer);
-    SDL_RenderPresent(renderer);
+    srand(time(0));
+    std::vector<Shape*> shapes;
 
-    SDL_Delay(3000);
+    bool run_game = true;
+
+    while (run_game)
+    {
+        if(SDL_PollEvent(&event))
+        {
+            switch (event.type) {
+                case SDL_QUIT:
+                    run_game = false;
+                    break;
+                case SDL_KEYDOWN:
+                    switch (event.key.keysym.sym) {
+                        case SDLK_r:
+                            shapes.push_back(create_random_rectange());
+                            break;
+                        case SDLK_t:
+                            shapes.push_back(create_random_triangle());
+                            break;
+                        case SDLK_c:
+                            shapes.push_back(create_random_circle());
+                            break;
+                        default:
+                            break;
+                    } break;
+                default:
+                    break;
+            }
+        }
+        
+
+        SDL_SetRenderDrawColor(renderer, 0, 50, 0, 255);
+        SDL_RenderClear(renderer);
+
+        for (auto shape : shapes)
+            shape->render(renderer);
+
+        SDL_RenderPresent(renderer);
+
+        SDL_Delay(16);
+    }
+
+
 
     SDL_DestroyWindow(window);
     SDL_Quit();
