@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "SDL.h"
+#include "deps/winin/include/SDL.h"
 
 int main()
 {
