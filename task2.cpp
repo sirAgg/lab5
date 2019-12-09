@@ -6,6 +6,7 @@
 #include "SDL.h"
 
 #include "Point2D.h"
+#include "Shape.h"
 #include "Rectangle.h"
 #include "Triangle.h"
 #include "Circle.h"
@@ -17,7 +18,7 @@ Rectangle* create_random_rectange()
 {
     return new Rectangle(
             Point2D((float)(rand()%window_width), (float)(rand()%window_height) ),
-            rand() | 255, 
+            Color(rand() | 255), 
             rand()%window_width,
             rand()%window_height);
 }
@@ -25,7 +26,7 @@ Triangle* create_random_triangle()
 {
     return new Triangle(
             Point2D((float)(rand()%window_width), (float)(rand()%window_height) ),
-            rand() | 255, 
+            Color(rand() | 255), 
             rand()%window_width,
             rand()%window_height);
 }
@@ -33,7 +34,7 @@ Circle* create_random_circle()
 {
     return new Circle(
             Point2D((float)(rand()%window_width), (float)(rand()%window_height) ),
-            rand() | 255, 
+            Color(rand() | 255), 
             rand()%window_height);
 }
 
@@ -84,7 +85,7 @@ int main(int argc, char** argv)
         }
         
 
-        SDL_SetRenderDrawColor(renderer, 0, 50, 0, 255);
+        SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
         SDL_RenderClear(renderer);
 
         for (auto shape : shapes)

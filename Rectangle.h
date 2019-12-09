@@ -7,7 +7,7 @@
 class Rectangle : public Shape
 {
 public:
-    Rectangle(Point2D pos, int color, int width, int height);
+    Rectangle(Point2D pos, Color color, int width, int height);
 
     void render(SDL_Renderer* renderer);
 private:

@@ -5,17 +5,17 @@
 
 const int CIRCLE_RESOLUTION = 32;
 
-Circle::Circle(Point2D pos, int color, int radius)
+Circle::Circle(Point2D pos, Color color, int radius)
     : Shape(pos, color), radius(radius)
 {}
 
 void Circle::render(SDL_Renderer* renderer)
 {
     printf("CIRCLE:\n\tpos: %s\n\tcolor: %08X\n\tradius: %d\n",
-         position.to_string().c_str(), color, radius);
+         position.to_string().c_str(), color.toInt(), radius);
     
     
-    SDL_SetRenderDrawColor(renderer, *(((unsigned char*)&color)+3), *(((unsigned char*)&color)+2), *(((unsigned char*)&color)+1), *(((unsigned char*)&color)+0));
+    SDL_SetRenderDrawColor(renderer, color.r, color.g, color.b, color.a );
 
     float angle1 = 0.0f;
     float angle2 = 0.0f;

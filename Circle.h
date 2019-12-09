@@ -8,7 +8,7 @@
 class Circle : public Shape
 {
 public:
-    Circle(Point2D pos, int color, int radius);
+    Circle(Point2D pos, Color color, int radius);
     void render(SDL_Renderer* renderer);
 private:
     int radius;
