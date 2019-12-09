@@ -11,12 +11,8 @@
 #include "Triangle.h"
 #include "Circle.h"
 
-#include "timer.h"
-
 const int window_width  = 600;
 const int window_height = 400;
-
-const int CIRCLE_RESOLUTION = 32;
 
 Rectangle* create_random_rectange()
 {
@@ -60,16 +56,9 @@ int main(int argc, char** argv)
     srand(time(0));
     std::vector<Shape*> shapes;
 
-    bool run_game = true;
+    bool run = true;
 
-    for (int i = 0; i < 5000; ++i) 
-        shapes.push_back(create_random_circle());
-    for (int i = 0; i < 5000; ++i) 
-        shapes.push_back(create_random_rectange());
-    for (int i = 0; i < 5000; ++i) 
-        shapes.push_back(create_random_triangle());
-
-    while (run_game)
+    while (run)
     {
         // event handeling
         while(SDL_PollEvent(&event))
@@ -77,7 +66,7 @@ int main(int argc, char** argv)
             switch (event.type) {
                 // close window
                 case SDL_QUIT:
-                    run_game = false;
+                    run = false;
                     break;
 
                 // handle Keyboard input
@@ -107,12 +96,6 @@ int main(int argc, char** argv)
 
         for (auto shape : shapes)
             shape->render(renderer);
-
-        {
-            Timer t("rendering");
-            for (auto shape : shapes)
-                shape->render(renderer);
-        }
 
         SDL_RenderPresent(renderer);
 
