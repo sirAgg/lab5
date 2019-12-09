@@ -8,7 +8,7 @@
 class Triangle : public Shape
 {
 public:
-    Triangle(Point2D pos, int color, int base, int height);
+    Triangle(Point2D pos, Color color, int base, int height);
     void render(SDL_Renderer* renderer);
 private:
 
