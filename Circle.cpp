@@ -11,8 +11,8 @@ Circle::Circle(Point2D pos, int color, int radius)
 
 void Circle::render(SDL_Renderer* renderer)
 {
-    printf("CIRCLE:\n\tpos: %s\n\tcolor: %08X\n\tradius: %d\n",
-         position.to_string().c_str(), color, radius);
+//   printf("CIRCLE:\n\tpos: %s\n\tcolor: %08X\n\tradius: %d\n",
+//        position.to_string().c_str(), color, radius);
     
     
     SDL_SetRenderDrawColor(renderer, *(((unsigned char*)&color)+3), *(((unsigned char*)&color)+2), *(((unsigned char*)&color)+1), *(((unsigned char*)&color)+0));

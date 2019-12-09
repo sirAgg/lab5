@@ -10,8 +10,12 @@
 #include "Triangle.h"
 #include "Circle.h"
 
+#include "timer.h"
+
 const int window_width  = 600;
 const int window_height = 400;
+
+const int CIRCLE_RESOLUTION = 32;
 
 Rectangle* create_random_rectange()
 {
@@ -46,7 +50,8 @@ int main(int argc, char** argv)
             SDL_WINDOWPOS_CENTERED, 
             SDL_WINDOWPOS_CENTERED, 
             window_width,window_height, 
-            SDL_WINDOW_SHOWN);
+            SDL_WINDOW_SHOWN
+    );
 
     SDL_Renderer* renderer = SDL_CreateRenderer(window, -1, 0);
     SDL_Event event;
@@ -56,14 +61,25 @@ int main(int argc, char** argv)
 
     bool run_game = true;
 
+    for (int i = 0; i < 5000; ++i) 
+        shapes.push_back(create_random_circle());
+    for (int i = 0; i < 5000; ++i) 
+        shapes.push_back(create_random_rectange());
+    for (int i = 0; i < 5000; ++i) 
+        shapes.push_back(create_random_triangle());
+
     while (run_game)
     {
-        if(SDL_PollEvent(&event))
+        // event handeling
+        while(SDL_PollEvent(&event))
         {
             switch (event.type) {
+                // close window
                 case SDL_QUIT:
                     run_game = false;
                     break;
+
+                // handle Keyboard input
                 case SDL_KEYDOWN:
                     switch (event.key.keysym.sym) {
                         case SDLK_r:
@@ -83,18 +99,24 @@ int main(int argc, char** argv)
             }
         }
         
+        //printf("Shapes: %d\n", (int)rectangles.size() + (int)triangles.size() + (int)circles.size());
 
-        SDL_SetRenderDrawColor(renderer, 0, 50, 0, 255);
+        SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
         SDL_RenderClear(renderer);
 
         for (auto shape : shapes)
             shape->render(renderer);
 
+        {
+            Timer t("rendering");
+            for (auto shape : shapes)
+                shape->render(renderer);
+        }
+
         SDL_RenderPresent(renderer);
 
-        SDL_Delay(16);
+        //SDL_Delay(16);
     }
-
 
 
     SDL_DestroyWindow(window);
@@ -102,4 +124,3 @@ int main(int argc, char** argv)
 
     return 0;
 }
-
