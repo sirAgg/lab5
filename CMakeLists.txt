@@ -1,7 +1,7 @@
 cmake_minimum_required( VERSION 3.10 )
 link_directories(BEFORE "deps" ".")
 
-SET(CMAKE_CXX_FLAGS "-O3")
+#SET(CMAKE_CXX_FLAGS "-O3")
 
 # extra stuff for ycm to function
 SET( CMAKE_EXPORT_COMPILE_COMMANDS ON )
