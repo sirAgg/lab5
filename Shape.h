@@ -32,7 +32,7 @@ public:
     virtual ~Shape() {}
 
     virtual void render(SDL_Renderer* renderer) = 0;
-
+	
 	Point2D get_position();
 	Color get_color();
 

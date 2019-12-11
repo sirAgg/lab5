@@ -56,10 +56,14 @@ int main(int argc, char** argv)
     srand(time(0));
     std::vector<Shape*> shapes;
 
+
     bool run = true;
 
     while (run)
     {
+		int start_time = SDL_GetTicks();
+
+
         // event handeling
         while(SDL_PollEvent(&event))
         {
@@ -98,8 +102,10 @@ int main(int argc, char** argv)
             shape->render(renderer);
 
         SDL_RenderPresent(renderer);
+		
 
-        SDL_Delay(16);
+		if(start_time < 16)
+			SDL_Delay(16-start_time);
     }
 
 

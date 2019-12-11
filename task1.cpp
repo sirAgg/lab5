@@ -19,7 +19,7 @@ void testRendering(SDL_Renderer* renderer, const std::vector<Shape*>& shapes)
     SDL_RenderPresent(renderer);
 }
 
-int main(void)
+int main(int argc, char** argv)
 {
     SDL_Init(SDL_INIT_EVERYTHING);
     SDL_Window* window = SDL_CreateWindow("Hello there", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 600,400, SDL_WINDOW_SHOWN);
