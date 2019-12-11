@@ -25,3 +25,6 @@ void Circle::render(SDL_Renderer* renderer)
         angle2 = angle1;
     }
 }
+
+int Circle::get_radius() { return radius; }
+void Circle::set_radius(int r) { radius = r; }

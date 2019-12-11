@@ -99,7 +99,7 @@ int main(int argc, char** argv)
 
         SDL_RenderPresent(renderer);
 
-        //SDL_Delay(16);
+        SDL_Delay(16);
     }
 
 

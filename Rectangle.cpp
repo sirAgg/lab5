@@ -19,3 +19,8 @@ void Rectangle::render(SDL_Renderer* renderer)
     SDL_RenderDrawLine(renderer, position.x+hw, position.y+hh, position.x-hw, position.y+hh );
     SDL_RenderDrawLine(renderer, position.x-hw, position.y+hh, position.x-hw, position.y-hh );
 }
+
+int Rectangle::get_widht() { return width; }
+int Rectangle::get_height() { return height; }
+void Rectangle::set_width(int w) { width = w; }
+void Rectangle::set_height(int h) { height = h; }

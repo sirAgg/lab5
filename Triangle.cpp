@@ -21,3 +21,7 @@ void Triangle::render(SDL_Renderer* renderer)
     SDL_RenderDrawLine(renderer, position.x+hb, position.y+hh, position.x   , position.y-hh );
 }
 
+int Triangle::get_base() { return base; }
+int Triangle::get_height() { return height; }
+void Triangle::set_base(int b) { base = b; }
+void Triangle::set_height(int h) { height = h; }
