@@ -14,10 +14,10 @@ void Rectangle::render(SDL_Renderer* renderer)
 
     int hw = width/2;
     int hh = height/2;
-    SDL_RenderDrawLine(renderer, position.x-hw, position.y-hh, position.x+hw, position.y-hh );
-    SDL_RenderDrawLine(renderer, position.x+hw, position.y-hh, position.x+hw, position.y+hh );
-    SDL_RenderDrawLine(renderer, position.x+hw, position.y+hh, position.x-hw, position.y+hh );
-    SDL_RenderDrawLine(renderer, position.x-hw, position.y+hh, position.x-hw, position.y-hh );
+    SDL_RenderDrawLine(renderer, position.get_x()-hw, position.get_y()-hh, position.get_x()+hw, position.get_y()-hh );
+    SDL_RenderDrawLine(renderer, position.get_x()+hw, position.get_y()-hh, position.get_x()+hw, position.get_y()+hh );
+    SDL_RenderDrawLine(renderer, position.get_x()+hw, position.get_y()+hh, position.get_x()-hw, position.get_y()+hh );
+    SDL_RenderDrawLine(renderer, position.get_x()-hw, position.get_y()+hh, position.get_x()-hw, position.get_y()-hh );
 }
 
 int Rectangle::get_widht() { return width; }

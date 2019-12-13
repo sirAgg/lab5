@@ -16,9 +16,9 @@ void Triangle::render(SDL_Renderer* renderer)
 
     int hb = base/2;
     int hh = height/2;
-    SDL_RenderDrawLine(renderer, position.x-hb, position.y+hh, position.x+hb, position.y+hh );
-    SDL_RenderDrawLine(renderer, position.x-hb, position.y+hh, position.x   , position.y-hh );
-    SDL_RenderDrawLine(renderer, position.x+hb, position.y+hh, position.x   , position.y-hh );
+    SDL_RenderDrawLine(renderer, position.get_x()-hb, position.get_y()+hh, position.get_x()+hb, position.get_y()+hh );
+    SDL_RenderDrawLine(renderer, position.get_x()-hb, position.get_y()+hh, position.get_x()   , position.get_y()-hh );
+    SDL_RenderDrawLine(renderer, position.get_x()+hb, position.get_y()+hh, position.get_x()   , position.get_y()-hh );
 }
 
 int Triangle::get_base() { return base; }

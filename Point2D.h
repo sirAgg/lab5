@@ -18,8 +18,14 @@ public:
     void operator= (const Point2D& other);
     bool operator== (const Point2D& other);
 
-    float x,y;
+    inline float get_x() {return x;}
+    inline float get_y() {return x;}
+
+    inline void set_x(float _x) { x=_x; }
+    inline void set_y(float _y) { y=_y; }
+
 private:
+    float x,y;
 };
 
 #endif /* ifndef POINT_2D */
